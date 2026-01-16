@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>품질 로봇 도입 기획안 - Smart Quality System</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            scroll-behavior: smooth;
+        }
+        /* Smooth scrolling for anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
+        .scroll-mt-20 {
+            scroll-margin-top: 5rem;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-gray-800">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-5 bg-transparent">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="bg-blue-900 text-white p-2 rounded-lg">
+                    <i data-lucide="bot" class="w-6 h-6"></i>
+                </div>
+                <span id="nav-title" class="text-xl font-bold tracking-tight text-blue-900 md:text-white transition-colors duration-300">
+                    Smart Quality System
+                </span>
+            </div>
+
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex gap-8">
+                <a href="#overview" class="nav-link font-medium text-gray-200 hover:text-blue-500 transition-colors">개요</a>
+                <a href="#status" class="nav-link font-medium text-gray-200 hover:text-blue-500 transition-colors">현황 및 문제점</a>
+                <a href="#strategy" class="nav-link font-medium text-gray-200 hover:text-blue-500 transition-colors">도입 방안</a>
+                <a href="#models" class="nav-link font-medium text-gray-200 hover:text-blue-500 transition-colors">기술/모델 비교</a>
+                <a href="#roadmap" class="nav-link font-medium text-gray-200 hover:text-blue-500 transition-colors">추진 계획</a>
+                <a href="#benefits" class="nav-link font-medium text-gray-200 hover:text-blue-500 transition-colors">기대 효과</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-600">
+                <i data-lucide="menu" id="menu-icon"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Nav -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg absolute w-full left-0 top-full p-4 flex flex-col gap-4 border-t border-gray-100">
+            <a href="#overview" class="mobile-link text-gray-600 font-medium py-2 border-b border-gray-100">개요</a>
+            <a href="#status" class="mobile-link text-gray-600 font-medium py-2 border-b border-gray-100">현황 및 문제점</a>
+            <a href="#strategy" class="mobile-link text-gray-600 font-medium py-2 border-b border-gray-100">도입 방안</a>
+            <a href="#models" class="mobile-link text-gray-600 font-medium py-2 border-b border-gray-100">기술/모델 비교</a>
+            <a href="#roadmap" class="mobile-link text-gray-600 font-medium py-2 border-b border-gray-100">추진 계획</a>
+            <a href="#benefits" class="mobile-link text-gray-600 font-medium py-2 border-b border-gray-100">기대 효과</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="relative bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 text-white pt-40 pb-24 px-4 md:px-8 overflow-hidden">
+        <!-- Background Graphic -->
+        <div class="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#FFFFFF" d="M44.7,-76.4C58.9,-69.2,71.8,-59.1,81.6,-46.6C91.4,-34.1,98.1,-19.2,95.8,-4.9C93.5,9.4,82.2,23.1,71.2,35.1C60.2,47.1,49.5,57.4,37.2,64.3C24.9,71.2,11,74.7,-1.8,77.8C-14.6,80.9,-27.9,83.6,-40.1,79.1C-52.3,74.6,-63.4,62.9,-71.6,49.8C-79.8,36.7,-85.1,22.2,-83.8,8.2C-82.5,-5.8,-74.6,-19.3,-65.1,-31.1C-55.6,-42.9,-44.5,-53,-32.4,-61.5C-20.3,-70,-7.2,-76.9,6.2,-87.6L19.6,-98.3" transform="translate(100 100)" />
+            </svg>
+        </div>
+        
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="inline-block px-4 py-2 bg-blue-800/50 rounded-full text-blue-200 text-sm font-semibold mb-6 border border-blue-700">
+                울산 전동화 공장 제조 경쟁력 강화
+            </div>
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                지능형 품질 로봇 도입<br/>
+                <span class="text-blue-400">Zero Defect</span> 달성 전략
+            </h1>
+            <p class="text-xl text-gray-300 max-w-2xl mb-10 leading-relaxed">
+                AI 기반 비전 검사와 로보틱스를 결합하여 전동화 핵심 부품의 절대 품질을 확보하고
+                스마트 팩토리 고도화를 실현합니다.
+            </p>
+            <div class="flex flex-wrap gap-4">
+                <a href="#strategy" class="px-8 py-4 bg-blue-500 hover:bg-blue-600 rounded-lg font-bold transition shadow-lg shadow-blue-900/50 flex items-center text-white">
+                    도입 방안 보기 <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
+                </a>
+                <div class="flex gap-4 items-center px-6 py-4 bg-white/10 rounded-lg backdrop-blur-sm border border-white/10">
+                    <div>
+                        <div class="text-xs text-blue-200">목표 자동화율</div>
+                        <div class="text-2xl font-bold">90%</div>
+                    </div>
+                    <div class="w-px h-8 bg-white/20"></div>
+                    <div>
+                        <div class="text-xs text-blue-200">불량 유출</div>
+                        <div class="text-2xl font-bold">0 PPM</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overview Section -->
+    <section id="overview" class="py-16 px-4 md:px-8 max-w-7xl mx-auto scroll-mt-20">
+        <div class="mb-10 border-l-4 border-blue-800 pl-4">
+            <h2 class="text-3xl font-bold text-gray-900">개요 및 핵심 목표</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+            <!-- Card 1 -->
+            <div class="bg-gradient-to-br from-white to-blue-50/50 rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+                <div class="flex items-center mb-4">
+                    <div class="p-3 bg-blue-50 rounded-lg text-blue-800 mr-3">
+                        <i data-lucide="trending-up" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800">추진 목적</h3>
+                </div>
+                <div class="text-gray-600">
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-2">
+                            <span class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
+                            <span>전동화 핵심 부품(BSA, PE) 생산 증대에 따른 <span class="font-bold text-gray-900">검사 병목 해소</span></span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
+                            <span>육안 검사 한계 극복 및 <span class="font-bold text-gray-900">데이터 자산화</span></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Card 2 (Spans 2 columns) -->
+            <div class="col-span-1 md:col-span-2 bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+                <div class="flex items-center mb-4">
+                    <div class="p-3 bg-blue-50 rounded-lg text-blue-800 mr-3">
+                        <i data-lucide="check-circle" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800">핵심 목표</h3>
+                </div>
+                <div class="text-gray-600 h-full">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 h-full items-center">
+                        <div class="text-center p-4 bg-blue-50 rounded-lg h-full flex flex-col justify-center">
+                            <div class="text-sm text-gray-500 mb-1">검사 자동화율</div>
+                            <div class="text-3xl font-bold text-blue-900">90%</div>
+                            <div class="text-xs text-blue-600 mt-1">▲ 70%p (현행 20%)</div>
+                        </div>
+                        <div class="text-center p-4 bg-blue-50 rounded-lg h-full flex flex-col justify-center">
+                            <div class="text-sm text-gray-500 mb-1">공정 불량 유출</div>
+                            <div class="text-3xl font-bold text-blue-900">0 PPM</div>
+                            <div class="text-xs text-blue-600 mt-1">완벽 품질 보증</div>
+                        </div>
+                        <div class="text-center p-4 bg-blue-50 rounded-lg h-full flex flex-col justify-center">
+                            <div class="text-sm text-gray-500 mb-1">데이터 관리</div>
+                            <div class="text-3xl font-bold text-blue-900">100%</div>
+                            <div class="text-xs text-blue-600 mt-1">실시간 서버 저장</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Status Section -->
+    <section id="status" class="py-16 px-4 md:px-8 max-w-7xl mx-auto scroll-mt-20">
+        <div class="mb-10 border-l-4 border-blue-800 pl-4">
+            <h2 class="text-3xl font-bold text-gray-900">현황 및 문제점 (As-Is vs To-Be)</h2>
+        </div>
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+            <div class="grid md:grid-cols-2">
+                <!-- As-Is -->
+                <div class="p-8 bg-gray-50 border-b md:border-b-0 md:border-r border-gray-200">
+                    <div class="flex items-center gap-2 mb-6">
+                        <i data-lucide="alert-triangle" class="text-orange-500 w-6 h-6"></i>
+                        <h3 class="text-2xl font-bold text-gray-800">Current (As-Is)</h3>
+                    </div>
+                    <ul class="space-y-6">
+                        <li class="flex gap-4">
+                            <div class="flex-shrink-0 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm text-gray-500 font-bold border border-gray-200">01</div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">작업자 의존적 검사</h4>
+                                <p class="text-sm text-gray-600 mt-1">피로도, 숙련도에 따른 검사 편차 발생 및 휴먼 에러 위험 상존</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <div class="flex-shrink-0 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm text-gray-500 font-bold border border-gray-200">02</div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">데이터 추적 한계</h4>
+                                <p class="text-sm text-gray-600 mt-1">단순 OK/NG 판정만 기록, 불량 발생 시 정밀 역추적 및 원인 분석 불가</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <div class="flex-shrink-0 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm text-gray-500 font-bold border border-gray-200">03</div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">공정 효율 저하</h4>
+                                <p class="text-sm text-gray-600 mt-1">생산 택트 타임 대비 검사 시간 과다로 전체 라인의 병목(Bottleneck) 작용</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- To-Be -->
+                <div class="p-8 bg-blue-900 text-white relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500 rounded-full filter blur-3xl opacity-20 -translate-y-1/2 translate-x-1/2"></div>
+                    <div class="flex items-center gap-2 mb-6 relative z-10">
+                        <i data-lucide="activity" class="text-blue-300 w-6 h-6"></i>
+                        <h3 class="text-2xl font-bold">Future (To-Be)</h3>
+                    </div>
+                    <ul class="space-y-6 relative z-10">
+                        <li class="flex gap-4">
+                            <div class="flex-shrink-0 w-10 h-10 bg-blue-800 rounded-full flex items-center justify-center shadow-lg text-blue-200 font-bold border border-blue-700">01</div>
+                            <div>
+                                <h4 class="font-bold text-white">AI 로봇 자동 검사</h4>
+                                <p class="text-sm text-blue-200 mt-1">다관절 로봇과 딥러닝 비전으로 사각지대 없는 정밀 검사 수행</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <div class="flex-shrink-0 w-10 h-10 bg-blue-800 rounded-full flex items-center justify-center shadow-lg text-blue-200 font-bold border border-blue-700">02</div>
+                            <div>
+                                <h4 class="font-bold text-white">디지털 품질 자산화</h4>
+                                <p class="text-sm text-blue-200 mt-1">모든 검사 영상/수치 데이터 서버 저장, 품질 이력 100% 추적 가능</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <div class="flex-shrink-0 w-10 h-10 bg-blue-800 rounded-full flex items-center justify-center shadow-lg text-blue-200 font-bold border border-blue-700">03</div>
+                            <div>
+                                <h4 class="font-bold text-white">라인 최적화 달성</h4>
+                                <p class="text-sm text-blue-200 mt-1">검사 속도 향상으로 UPH 증대 및 작업자 안전/고부가가치 업무 전환</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strategy Section -->
+    <section id="strategy" class="py-16 px-4 md:px-8 max-w-7xl mx-auto scroll-mt-20">
+        <div class="mb-10 border-l-4 border-blue-800 pl-4 flex justify-between items-center">
+            <h2 class="text-3xl font-bold text-gray-900">도입 방안: 통합 품질 검사 셀(Cell)</h2>
+        </div>
+        <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+            <div class="flex flex-col md:flex-row gap-6 items-center justify-between mb-12">
+                <!-- Step 1 -->
+                <div class="flex-1 text-center group">
+                    <div class="w-20 h-20 mx-auto bg-blue-50 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-blue-600 transition-colors duration-300">
+                        <i data-lucide="bot" class="w-10 h-10 text-blue-600 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">다관절 로봇</h4>
+                    <p class="text-sm text-gray-500">6축 협동로봇으로<br/>사각지대 촬영</p>
+                </div>
+                
+                <i data-lucide="arrow-right" class="hidden md:block text-gray-300 w-8 h-8"></i>
+                
+                <!-- Step 2 -->
+                <div class="flex-1 text-center group">
+                    <div class="w-20 h-20 mx-auto bg-indigo-50 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-indigo-600 transition-colors duration-300">
+                        <i data-lucide="eye" class="w-10 h-10 text-indigo-600 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">3D/2D 비전</h4>
+                    <p class="text-sm text-gray-500">㎛ 단위 정밀 측정<br/>미세 크랙/찍힘 검출</p>
+                </div>
+
+                <i data-lucide="arrow-right" class="hidden md:block text-gray-300 w-8 h-8"></i>
+
+                <!-- Step 3 -->
+                <div class="flex-1 text-center group">
+                    <div class="w-20 h-20 mx-auto bg-purple-50 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-purple-600 transition-colors duration-300">
+                        <i data-lucide="cpu" class="w-10 h-10 text-purple-600 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">AI 딥러닝</h4>
+                    <p class="text-sm text-gray-500">비정형 불량 학습<br/>과검(가짜 불량) 최소화</p>
+                </div>
+
+                <i data-lucide="arrow-right" class="hidden md:block text-gray-300 w-8 h-8"></i>
+
+                <!-- Step 4 -->
+                <div class="flex-1 text-center group">
+                    <div class="w-20 h-20 mx-auto bg-teal-50 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-teal-600 transition-colors duration-300">
+                        <i data-lucide="server" class="w-10 h-10 text-teal-600 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">MES 통합 관제</h4>
+                    <p class="text-sm text-gray-500">QMS 연동 및<br/>실시간 데이터 전송</p>
+                </div>
+            </div>
+
+            <!-- Targets -->
+            <div class="grid md:grid-cols-2 gap-6 mt-8">
+                <div class="border border-gray-200 rounded-lg p-5 bg-gray-50">
+                    <div class="flex justify-between items-center mb-3">
+                        <h4 class="font-bold text-gray-800">1순위 적용: BSA 라인</h4>
+                        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-800">최우선</span>
+                    </div>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-blue-500"></i>
+                            <span><strong>실링(Sealing) 도포:</strong> 3D 레이저로 끊김/기포/두께 측정</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-blue-500"></i>
+                            <span><strong>고전압 버스바 체결:</strong> 체결 토크 및 핀 손상 비전 검사</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="border border-gray-200 rounded-lg p-5">
+                    <div class="flex justify-between items-center mb-3">
+                        <h4 class="font-bold text-gray-800">2순위 적용: PE 시스템</h4>
+                        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-800">확대</span>
+                    </div>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-gray-400"></i>
+                            <span><strong>하우징 외관:</strong> 주조 기포, 스크래치 등 감성 품질</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-gray-400"></i>
+                            <span><strong>오일 실링/볼트:</strong> 누유 방지 실링 및 볼트 체결 전수 확인</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Detail Modal Button -->
+            <div class="mt-8 text-center">
+                <button id="open-strategy-modal" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors">
+                    <i data-lucide="plus-circle" class="w-5 h-5 mr-2"></i>
+                    상세 도입 방안 보기
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: Models & Comparison -->
+    <section id="models" class="py-16 px-4 md:px-8 max-w-7xl mx-auto scroll-mt-20">
+        <div class="mb-10 border-l-4 border-blue-800 pl-4">
+            <h2 class="text-3xl font-bold text-gray-900">검토 대상 로봇 및 기술 비교 (Tech Specs)</h2>
+        </div>
+        
+        <div class="grid lg:grid-cols-2 gap-8 mb-8">
+            <!-- Option 1: Cobot -->
+            <div class="bg-white rounded-xl shadow-lg border border-blue-100 overflow-hidden">
+                <div class="bg-blue-50 p-4 border-b border-blue-100 flex justify-between items-center">
+                    <h3 class="font-bold text-lg text-blue-900 flex items-center gap-2">
+                        <i data-lucide="users" class="w-5 h-5"></i>
+                        협동 로봇 (Collaborative Robot)
+                    </h3>
+                    <span class="text-xs font-semibold bg-blue-200 text-blue-800 px-2 py-1 rounded">추천 (검사 공정)</span>
+                </div>
+                <div class="p-6">
+                    <ul class="space-y-4 text-sm text-gray-600 mb-6">
+                        <li class="flex items-start gap-2">
+                            <span class="font-bold min-w-[60px] text-gray-900">장점:</span>
+                            <span>별도 안전 펜스 불필요로 공간 효율 높음, 작업자와 협업 가능, 티칭 용이</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="font-bold min-w-[60px] text-gray-900">단점:</span>
+                            <span>산업용 로봇 대비 구동 속도 및 가반 하중(Payload)이 낮음</span>
+                        </li>
+                        <li class="flex items-start gap-2 bg-yellow-50 p-2 rounded">
+                            <span class="font-bold min-w-[60px] text-yellow-800">예상 가격:</span>
+                            <span class="font-semibold text-yellow-800">3,000 ~ 6,000만 원 (대당/본체)</span>
+                        </li>
+                    </ul>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <h4 class="font-bold text-gray-800 text-sm mb-3">검토 모델 예시</h4>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="text-center group">
+                                <div class="overflow-hidden rounded-md mb-2 border border-gray-200 bg-white">
+                                    <img src="https://placehold.co/300x200/e2e8f0/475569?text=Doosan+Robotics" alt="" class="w-full h-32 object-cover hover:scale-105 transition-transform duration-300">
+                                </div>
+                                <div class="font-bold text-sm text-gray-800">Doosan Robotics</div>
+                                <div class="text-xs text-gray-500">M-Series / H-Series</div>
+                            </div>
+                            <div class="text-center group">
+                                <div class="overflow-hidden rounded-md mb-2 border border-gray-200 bg-white">
+                                    <img src="https://placehold.co/300x200/e2e8f0/475569?text=Universal+Robots" alt="" class="w-full h-32 object-cover hover:scale-105 transition-transform duration-300">
+                                </div>
+                                <div class="font-bold text-sm text-gray-800">Universal Robots</div>
+                                <div class="text-xs text-gray-500">UR10e / UR20</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Option 2: Industrial Robot -->
+            <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+                <div class="bg-gray-100 p-4 border-b border-gray-200 flex justify-between items-center">
+                    <h3 class="font-bold text-lg text-gray-800 flex items-center gap-2">
+                        <i data-lucide="settings" class="w-5 h-5"></i>
+                        산업용 로봇 (Industrial Robot)
+                    </h3>
+                    <span class="text-xs font-semibold bg-gray-300 text-gray-800 px-2 py-1 rounded">이송/조립 공정</span>
+                </div>
+                <div class="p-6">
+                    <ul class="space-y-4 text-sm text-gray-600 mb-6">
+                        <li class="flex items-start gap-2">
+                            <span class="font-bold min-w-[60px] text-gray-900">장점:</span>
+                            <span>고속 구동, 높은 정밀도 및 반복 재현성, 무거운 부품 핸들링 가능</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="font-bold min-w-[60px] text-gray-900">단점:</span>
+                            <span>안전 펜스 설치 필수(공간 차지), 전문 프로그래밍 필요</span>
+                        </li>
+                        <li class="flex items-start gap-2 bg-gray-50 p-2 rounded">
+                            <span class="font-bold min-w-[60px] text-gray-700">예상 가격:</span>
+                            <span class="font-semibold text-gray-700">4,000 ~ 8,000만 원 (대당/세트)</span>
+                        </li>
+                    </ul>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <h4 class="font-bold text-gray-800 text-sm mb-3">검토 모델 예시</h4>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="text-center group">
+                                <div class="overflow-hidden rounded-md mb-2 border border-gray-200 bg-white">
+                                    <img src="https://placehold.co/300x200/f1f5f9/475569?text=Hyundai+Robotics" alt="" class="w-full h-32 object-cover hover:scale-105 transition-transform duration-300">
+                                </div>
+                                <div class="font-bold text-sm text-gray-800">Hyundai Robotics</div>
+                                <div class="text-xs text-gray-500">HH7 / HA006B</div>
+                            </div>
+                            <div class="text-center group">
+                                <div class="overflow-hidden rounded-md mb-2 border border-gray-200 bg-white">
+                                    <img src="https://placehold.co/300x200/f1f5f9/475569?text=FANUC" alt="" class="w-full h-32 object-cover hover:scale-105 transition-transform duration-300">
+                                </div>
+                                <div class="font-bold text-sm text-gray-800">FANUC</div>
+                                <div class="text-xs text-gray-500">M-10iD / M-20iD</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vision Sensor Info -->
+        <div class="bg-white rounded-xl shadow-lg border border-gray-100 p-6">
+            <h3 class="font-bold text-lg text-gray-800 mb-4 flex items-center gap-2">
+                <i data-lucide="scan" class="w-5 h-5 text-indigo-600"></i>
+                핵심 비전 시스템 (Vision System) & 예산
+            </h3>
+            <div class="grid md:grid-cols-2 gap-6 text-sm">
+                <div class="border-r md:border-r border-gray-100 pr-0 md:pr-6">
+                    <h4 class="font-bold text-indigo-700 mb-2">3D 레이저 프로파일러</h4>
+                    <div class="overflow-hidden rounded-md mb-3 border border-indigo-100">
+                        <img src="https://placehold.co/400x200/e0e7ff/4338ca?text=3D+Laser+Profiler" alt="" class="w-full h-32 object-cover hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <p class="text-gray-600 mb-2">실링 도포 두께, 높이 정밀 측정용</p>
+                    <ul class="list-disc list-inside text-gray-500 mb-3">
+                        <li><strong>Keyence:</strong> LJ-X8000 Series (초고속)</li>
+                        <li><strong>Cognex:</strong> 3D-A5000 (고해상도)</li>
+                    </ul>
+                    <div class="text-xs font-semibold text-indigo-800 bg-indigo-50 px-2 py-1 rounded inline-block">
+                        예상가: 2,000 ~ 5,000만 원 (대당)
+                    </div>
+                </div>
+                <div class="pl-0 md:pl-2">
+                    <h4 class="font-bold text-purple-700 mb-2">AI 딥러닝 비전 S/W</h4>
+                    <div class="overflow-hidden rounded-md mb-3 border border-purple-100">
+                        <img src="https://placehold.co/400x200/f3e8ff/7e22ce?text=AI+Vision+Software" alt="" class="w-full h-32 object-cover hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <p class="text-gray-600 mb-2">비정형 외관 불량 및 이종 부품 판별용</p>
+                    <ul class="list-disc list-inside text-gray-500 mb-3">
+                        <li><strong>Neurocle:</strong> Neuro-T (Auto DL)</li>
+                        <li><strong>Suakit:</strong> Manufacturing Vision AI</li>
+                    </ul>
+                    <div class="text-xs font-semibold text-purple-800 bg-purple-50 px-2 py-1 rounded inline-block">
+                        예상가: 1,000 ~ 3,000만 원 (라이선스/프로젝트)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section id="roadmap" class="py-16 px-4 md:px-8 max-w-7xl mx-auto scroll-mt-20">
+        <div class="mb-10 border-l-4 border-blue-800 pl-4">
+            <h2 class="text-3xl font-bold text-gray-900">추진 일정 (Roadmap)</h2>
+        </div>
+        <div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-gray-300 before:to-transparent">
+            
+            <!-- Phase 1 -->
+            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-blue-600 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                    <span class="text-white font-bold text-xs">P1</span>
+                </div>
+                <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-xl shadow-md border-l-4 border-blue-600">
+                    <div class="flex justify-between items-center mb-1">
+                        <h3 class="font-bold text-gray-800">Phase 1: 파일럿 구축 및 검증</h3>
+                        <span class="text-xs font-semibold text-blue-600 bg-blue-100 px-2 py-1 rounded">202X.01 ~ 04</span>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-3">BSA 핵심 공정 1개 라인 대상 (PoC)</p>
+                    <ul class="text-sm text-gray-600 space-y-1 list-disc list-inside">
+                        <li>불량 이미지 데이터셋 수집 및 AI 모델 학습</li>
+                        <li>로봇 티칭 경로 최적화 및 비전 조명 세팅</li>
+                        <li><strong>목표:</strong> 검출 신뢰성 99.9% 확보</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Phase 2 -->
+            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-white border-gray-300 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                    <span class="text-gray-500 font-bold text-xs">P2</span>
+                </div>
+                <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-xl shadow-md border-l-4 border-gray-300">
+                    <div class="flex justify-between items-center mb-1">
+                        <h3 class="font-bold text-gray-800">Phase 2: 본 공정 적용 및 안정화</h3>
+                        <span class="text-xs font-semibold text-gray-600 bg-gray-100 px-2 py-1 rounded">202X.05 ~ 08</span>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-3">BSA 전 라인 및 PE 주요 공정 확대</p>
+                    <ul class="text-sm text-gray-600 space-y-1 list-disc list-inside">
+                        <li>MES 인터페이스 개발 (검사 결과 자동 매핑)</li>
+                        <li>라인 연동 시운전 및 C/T 최적화</li>
+                        <li>운영/유지보수 담당자 교육</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Phase 3 -->
+            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-white border-gray-300 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                    <span class="text-gray-500 font-bold text-xs">P3</span>
+                </div>
+                <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-xl shadow-md border-l-4 border-gray-300">
+                    <div class="flex justify-between items-center mb-1">
+                        <h3 class="font-bold text-gray-800">Phase 3: 고도화 및 확산</h3>
+                        <span class="text-xs font-semibold text-gray-600 bg-gray-100 px-2 py-1 rounded">202X.09 ~</span>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-3">전 공장 표준화 및 예지 보전</p>
+                    <ul class="text-sm text-gray-600 space-y-1 list-disc list-inside">
+                        <li>수집 데이터 활용 예지 품질(Predictive Quality) 시스템</li>
+                        <li>국내외 전동화 거점 공장 횡전개 (표준화)</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="py-16 px-4 md:px-8 max-w-7xl mx-auto scroll-mt-20">
+        <div class="mb-10 border-l-4 border-blue-800 pl-4">
+            <h2 class="text-3xl font-bold text-gray-900">기대 효과 및 결론</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6 mb-12">
+            <!-- Benefit 1 -->
+            <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 border border-gray-100 border-t-4 border-t-green-500">
+                <div class="flex items-center mb-4">
+                    <div class="p-3 bg-blue-50 rounded-lg text-blue-800 mr-3">
+                        <i data-lucide="dollar-sign" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800">비용 절감</h3>
+                </div>
+                <div class="text-gray-600">
+                    <p class="mb-4">검사 인원 효율화 및 실패 비용 감소</p>
+                    <div class="bg-green-50 p-3 rounded text-sm text-green-800">
+                        <div class="flex justify-between mb-1">
+                            <span>인력 운영:</span>
+                            <span class="font-bold">12명 → 2명 (83% ↓)</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>실패 비용:</span>
+                            <span class="font-bold">연 5.4억 원 절감</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Benefit 2 -->
+            <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 border border-gray-100 border-t-4 border-t-blue-500">
+                <div class="flex items-center mb-4">
+                    <div class="p-3 bg-blue-50 rounded-lg text-blue-800 mr-3">
+                        <i data-lucide="shield-check" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800">품질 신뢰도</h3>
+                </div>
+                <div class="text-gray-600">
+                    <p class="mb-4">데이터 기반 객관적 품질 보증</p>
+                    <div class="bg-blue-50 p-3 rounded text-sm text-blue-800">
+                        <div class="flex justify-between mb-1">
+                            <span>데이터:</span>
+                            <span class="font-bold">100% 전수 확보</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>이력 추적:</span>
+                            <span class="font-bold">즉시 (Real-time)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Benefit 3 -->
+            <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 border border-gray-100 border-t-4 border-t-purple-500">
+                <div class="flex items-center mb-4">
+                    <div class="p-3 bg-blue-50 rounded-lg text-blue-800 mr-3">
+                        <i data-lucide="activity" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800">안전 및 생산성</h3>
+                </div>
+                <div class="text-gray-600">
+                    <p class="mb-4">UPH 향상 및 안전 사고 예방</p>
+                    <div class="bg-purple-50 p-3 rounded text-sm text-purple-800">
+                        <div class="flex justify-between mb-1">
+                            <span>사이클 타임:</span>
+                            <span class="font-bold">30s → 15s (50% ↓)</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>안전 사고:</span>
+                            <span class="font-bold">0건 (Zero)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-gradient-to-r from-slate-800 to-blue-900 rounded-2xl p-8 text-center text-white shadow-xl">
+            <h3 class="text-2xl font-bold mb-4">"Global No.1 전동화 생산 기지 도약"</h3>
+            <p class="text-blue-100 max-w-3xl mx-auto leading-relaxed mb-6">
+                울산 전동화 공장의 품질 로봇 도입은 단순한 비용 절감을 넘어,<br class="hidden md:block" />
+                전동화 부품의 <strong>완벽한 품질 안전</strong>을 담보하기 위한 필수적인 투자입니다.
+            </p>
+            <button class="bg-white text-blue-900 px-8 py-3 rounded-lg font-bold hover:bg-blue-50 transition shadow-lg">
+                파일럿(Phase 1) 착수 승인 요청
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 text-center text-sm">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-center gap-2 mb-4 text-white">
+                <i data-lucide="bot" class="w-5 h-5"></i>
+                <span class="font-bold text-lg">Smart Quality System</span>
+            </div>
+            <p>울산 전동화 공장 생산기술팀 / 품질보증팀</p>
+            <p class="mt-2">© 202X Hyundai Mobis. All rights reserved. Internal Use Only.</p>
+        </div>
+    </footer>
+
+    <!-- Strategy Detail Modal -->
+    <div id="strategy-modal" class="fixed inset-0 z-[60] hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+            
+            <!-- Background Overlay -->
+            <div class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75 backdrop-blur-sm" aria-hidden="true" id="modal-overlay"></div>
+
+            <!-- This element is to trick the browser into centering the modal contents. -->
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+
+            <!-- Modal Panel -->
+            <div class="inline-block align-bottom bg-white rounded-2xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full relative">
+                
+                <!-- Header -->
+                <div class="bg-blue-900 px-6 py-4 flex justify-between items-center">
+                    <h3 class="text-lg leading-6 font-bold text-white flex items-center gap-2" id="modal-title">
+                        <i data-lucide="settings" class="w-5 h-5"></i>
+                        상세 도입 방안 및 프로세스 (Detailed Process)
+                    </h3>
+                    <button type="button" id="close-modal-btn" class="text-blue-200 hover:text-white transition-colors focus:outline-none">
+                        <i data-lucide="x" class="w-6 h-6"></i>
+                    </button>
+                </div>
+
+                <!-- Body -->
+                <div class="px-6 py-6 max-h-[70vh] overflow-y-auto">
+                    
+                    <!-- Section 1: Detailed System Architecture -->
+                    <div class="mb-8">
+                        <h4 class="text-lg font-bold text-gray-800 mb-4 border-l-4 border-blue-500 pl-3">1. 시스템 구성 아키텍처 (Layered Architecture)</h4>
+                        
+                        <!-- Level 3: Enterprise Layer -->
+                        <div class="mb-2 bg-slate-100 p-3 rounded-lg border border-slate-300 text-center">
+                            <span class="font-bold text-slate-700 block text-xs uppercase tracking-wider mb-1">Level 3: Enterprise & Cloud Layer (Data & Mgmt)</span>
+                            <div class="flex justify-center gap-4">
+                                <div class="bg-white px-4 py-2 rounded shadow text-sm font-bold text-blue-900 border border-blue-200">MES / QMS<br><span class="text-xs font-normal text-gray-500">생산/품질 이력 관리</span></div>
+                                <div class="bg-white px-4 py-2 rounded shadow text-sm font-bold text-blue-900 border border-blue-200">Cloud / Central DB<br><span class="text-xs font-normal text-gray-500">AI 모델 학습/배포</span></div>
+                            </div>
+                        </div>
+
+                        <!-- Connector -->
+                        <div class="flex justify-center -my-2 relative z-10"><i data-lucide="arrow-down" class="text-gray-400"></i></div>
+
+                        <!-- Level 2: Edge & Network Layer -->
+                        <div class="mb-2 bg-indigo-50 p-3 rounded-lg border border-indigo-200 text-center relative">
+                            <span class="font-bold text-indigo-700 block text-xs uppercase tracking-wider mb-1">Level 2: AI Edge & Network Layer (Intelligence)</span>
+                            <div class="absolute right-2 top-2">
+                                <span class="text-[10px] bg-red-100 text-red-600 px-2 py-0.5 rounded-full border border-red-200 font-bold">AMR망 분리 (VLAN)</span>
+                            </div>
+                            <div class="flex justify-center gap-4">
+                                <div class="bg-white px-4 py-2 rounded shadow text-sm font-bold text-indigo-900 border border-indigo-200">AI Inference Server<br><span class="text-xs font-normal text-gray-500">GPU 기반 실시간 판정</span></div>
+                                <div class="bg-white px-4 py-2 rounded shadow text-sm font-bold text-indigo-900 border border-indigo-200">Industrial Switch<br><span class="text-xs font-normal text-gray-500">대용량 영상 전송</span></div>
+                            </div>
+                        </div>
+
+                        <!-- Connector -->
+                        <div class="flex justify-center -my-2 relative z-10"><i data-lucide="arrow-down" class="text-gray-400"></i></div>
+
+                        <!-- Level 1: Field Layer -->
+                        <div class="bg-green-50 p-3 rounded-lg border border-green-200 text-center">
+                            <span class="font-bold text-green-700 block text-xs uppercase tracking-wider mb-1">Level 1: Field Device Layer (Perception & Control)</span>
+                            <div class="flex justify-center gap-4 flex-wrap">
+                                <div class="bg-white px-3 py-2 rounded shadow text-sm font-bold text-green-900 border border-green-200">3D/2D Vision<br><span class="text-xs font-normal text-gray-500">GigE/CoaXPress</span></div>
+                                <div class="bg-white px-3 py-2 rounded shadow text-sm font-bold text-green-900 border border-green-200">Robot Controller<br><span class="text-xs font-normal text-gray-500">Motion Path 제어</span></div>
+                                <div class="bg-white px-3 py-2 rounded shadow text-sm font-bold text-green-900 border border-green-200">PLC<br><span class="text-xs font-normal text-gray-500">Line Interlock</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Network & Data Strategy Box -->
+                    <div class="mb-8 bg-gray-50 rounded-xl p-5 border border-gray-200 text-sm">
+                        <h5 class="font-bold text-gray-800 mb-2 flex items-center gap-2">
+                            <i data-lucide="network" class="w-4 h-4 text-blue-600"></i> 네트워크 및 데이터 연계 전략
+                        </h5>
+                        <ul class="list-disc list-inside space-y-2 text-gray-600">
+                            <li>
+                                <strong class="text-gray-900">망 분리 (Network Isolation):</strong> 
+                                기존 <span class="text-red-600 font-bold">AMR 운영 네트워크와 물리적/논리적(VLAN) 분리</span>를 통해 Vision 대용량 이미지 전송 시 대역폭 충돌 방지 및 Latency 보장.
+                            </li>
+                            <li>
+                                <strong class="text-gray-900">하이브리드 아키텍처:</strong> 
+                                <span class="bg-yellow-100 px-1 rounded">판정(Inference)</span>은 현장 Edge 서버에서 수행(Low Latency), <span class="bg-blue-100 px-1 rounded">학습(Training)</span>은 클라우드/중앙서버에서 수행하여 보안과 성능 동시 확보.
+                            </li>
+                            <li>
+                                <strong class="text-gray-900">MES 연계 시점 (Data Point):</strong>
+                                <ul class="pl-6 mt-1 space-y-1 text-xs text-gray-500">
+                                    <li>1) <strong>검사 전(Pre):</strong> RFID 태깅 시 MES로부터 BOM/차종 정보 수신 (검사 스펙 자동 로딩)</li>
+                                    <li>2) <strong>검사 후(Post):</strong> 판정 결과(OK/NG) 즉시 전송 및 NG 발생 시 이미지 URL 링크 매핑.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Section 2: Step-by-Step Workflow -->
+                    <div class="mb-8">
+                        <h4 class="text-lg font-bold text-gray-800 mb-4 border-l-4 border-blue-500 pl-3">2. 단계별 상세 프로세스</h4>
+                        <ul class="space-y-4">
+                            <li class="flex gap-4">
+                                <div class="flex-shrink-0 w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold text-sm">01</div>
+                                <div>
+                                    <h5 class="font-bold text-gray-800">제품 로딩 및 ID 스캔</h5>
+                                    <p class="text-sm text-gray-600 mt-1">컨베이어로 제품 진입 시 RFID/QR 코드를 리딩하여 차종 및 사양 정보(BOM)를 로드합니다.</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-4">
+                                <div class="flex-shrink-0 w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold text-sm">02</div>
+                                <div>
+                                    <h5 class="font-bold text-gray-800">로봇 다축 촬영 (Multi-Angle)</h5>
+                                    <p class="text-sm text-gray-600 mt-1">협동로봇이 사전에 티칭된 경로(Path)를 따라 이동하며 사각지대 없이 부품을 다각도로 촬영합니다.</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-4">
+                                <div class="flex-shrink-0 w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold text-sm">03</div>
+                                <div>
+                                    <h5 class="font-bold text-gray-800">AI 추론 및 판정 (Edge Server)</h5>
+                                    <p class="text-sm text-gray-600 mt-1">수집된 이미지를 Edge GPU 서버의 딥러닝 모델이 분석하여 0.5초 이내에 OK/NG를 판정하고, 결함 위치(Heatmap)를 시각화합니다.</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-4">
+                                <div class="flex-shrink-0 w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold text-sm">04</div>
+                                <div>
+                                    <h5 class="font-bold text-gray-800">배출 및 데이터 로깅</h5>
+                                    <p class="text-sm text-gray-600 mt-1">양품은 다음 공정으로 이송되며, 불량품은 별도 리젝트(Reject) 라인으로 배출됩니다. 모든 결과는 MES 서버에 동기화됩니다.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Section 3: Key Tech Specs -->
+                    <div>
+                        <h4 class="text-lg font-bold text-gray-800 mb-4 border-l-4 border-blue-500 pl-3">3. 핵심 기술 요구사항 (Key Specs)</h4>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full text-sm text-left text-gray-600">
+                                <thead class="bg-gray-50 text-gray-700 uppercase font-bold">
+                                    <tr>
+                                        <th class="px-4 py-2">구분</th>
+                                        <th class="px-4 py-2">요구 사양</th>
+                                        <th class="px-4 py-2">비고</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-100">
+                                    <tr>
+                                        <td class="px-4 py-2 font-medium">검사 속도 (C/T)</td>
+                                        <td class="px-4 py-2">15초 이내 / 개당</td>
+                                        <td class="px-4 py-2">라인 택트 타임 준수</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-2 font-medium">검출력 (Resolution)</td>
+                                        <td class="px-4 py-2">50㎛ 이상 미세 결함 검출</td>
+                                        <td class="px-4 py-2">3D 프로파일러 기준</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-2 font-medium">AI 정확도</td>
+                                        <td class="px-4 py-2">미검(Miss) 0%, 과검(False) 0.1% 이하</td>
+                                        <td class="px-4 py-2">초기 학습 데이터 5천 장 필요</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Footer -->
+                <div class="bg-gray-50 px-6 py-4 flex justify-end">
+                    <button type="button" id="close-modal-footer-btn" class="w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                        닫기
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        const navTitle = document.getElementById('nav-title');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-md', 'py-3');
+                navbar.classList.remove('bg-transparent', 'py-5');
+                navTitle.classList.remove('md:text-white');
+                navTitle.classList.add('text-blue-900');
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('text-gray-200');
+                    link.classList.add('text-gray-600');
+                });
+            } else {
+                navbar.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-md', 'py-3');
+                navbar.classList.add('bg-transparent', 'py-5');
+                navTitle.classList.add('md:text-white');
+                navTitle.classList.remove('text-blue-900');
+
+                navLinks.forEach(link => {
+                    link.classList.add('text-gray-200');
+                    link.classList.remove('text-gray-600');
+                });
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        let isMenuOpen = false;
+
+        mobileMenuBtn.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                mobileMenu.classList.remove('hidden');
+                menuIcon.setAttribute('data-lucide', 'x');
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuIcon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons();
+        });
+
+        // Close mobile menu when a link is clicked
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                isMenuOpen = false;
+                mobileMenu.classList.add('hidden');
+                menuIcon.setAttribute('data-lucide', 'menu');
+                lucide.createIcons();
+            });
+        });
+
+        // --- Modal Logic ---
+        const modalBtn = document.getElementById('open-strategy-modal');
+        const modal = document.getElementById('strategy-modal');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const closeFooterBtn = document.getElementById('close-modal-footer-btn');
+        const overlay = document.getElementById('modal-overlay');
+
+        function toggleModal() {
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling background
+            } else {
+                modal.classList.add('hidden');
+                document.body.style.overflow = ''; // Restore scrolling
+            }
+        }
+
+        modalBtn.addEventListener('click', toggleModal);
+        closeModalBtn.addEventListener('click', toggleModal);
+        closeFooterBtn.addEventListener('click', toggleModal);
+        overlay.addEventListener('click', toggleModal); // Close when clicking outside
+
+        // Close on ESC key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape" && !modal.classList.contains('hidden')) {
+                toggleModal();
+            }
+        });
+
+    </script>
+</body>
+</html>
